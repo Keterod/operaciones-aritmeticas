@@ -1,5 +1,11 @@
 from operaciones_aritmeticas import operacionesAritmeticas
 
 if __name__ == "__main__":
-    operaciones= operacionesAritmeticas(5, 8)
+    numero1 = int(input("Ingrese el primer número: "))
+    numero2 = int(input("Ingrese el segundo número: "))
+
+    operaciones = operacionesAritmeticas(numero1, numero2)
     print("La suma es:", operaciones.sumar_dos_numeros())
+    print("La resta es:", operaciones.restar_dos_numeros())
+    print("La multiplicación es:", operaciones.multiplicar_dos_numeros())
+    print("La división es:", operaciones.dividir_dos_numeros())
