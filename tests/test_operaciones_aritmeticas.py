@@ -3,7 +3,7 @@ from src.logica.operaciones_aritmeticas import OperacionesAritmeticas
 
 class TestOperacionesAritmeticas(unittest.TestCase):
     def setUp(self):
-         self.operacion = OperacionesAritmeticas()
+        self.operacion = OperacionesAritmeticas()
 
 
     def test_suma_numeros_retornaSuma(self):
@@ -44,10 +44,23 @@ class TestOperacionesAritmeticas(unittest.TestCase):
         division2 = 2
         resultadoEsperado = 5
 
-
         # do
        
         resultadoCalculado = self.operacion.division(division1, division2)
 
         # assert
         self.assertEqual(resultadoEsperado, resultadoCalculado)
+    
+    def test_divicion_NoNumeros_lanzaException(self):
+
+        with self.assertRaises(TypeError):
+            self.operacion.division(5, "a")
+    
+    def test_division_divisorCero_lanzaException(self):
+
+        with self.assertRaises(ZeroDivisionError):
+            self.operacion.division(5, 0)
+
+
+    def tearDown(self):
+        self.operacion = None
