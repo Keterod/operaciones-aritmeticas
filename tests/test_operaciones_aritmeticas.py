@@ -2,6 +2,10 @@ import unittest
 from src.logica.operaciones_aritmeticas import OperacionesAritmeticas
 
 class TestOperacionesAritmeticas(unittest.TestCase):
+    def setUp(self):
+         self.operacion = OperacionesAritmeticas()
+
+
     def test_suma_numeros_retornaSuma(self):
         # arrange
         sumando1 = 5
@@ -10,8 +14,7 @@ class TestOperacionesAritmeticas(unittest.TestCase):
 
 
         # do
-        operacion = OperacionesAritmeticas()
-        resultadoCalculado = operacion.suma(sumando1, sumando2)
+        resultadoCalculado = self.operacion.suma(sumando1, sumando2)
 
         # assert
         self.assertEqual(resultadoEsperado, resultadoCalculado)
@@ -24,8 +27,27 @@ class TestOperacionesAritmeticas(unittest.TestCase):
 
 
         # do
-        operacion = OperacionesAritmeticas()
-        resultadoCalculado = operacion.suma(sumando1, sumando2)
+   
+        resultadoCalculado = self.operacion.suma(sumando1, sumando2)
+
+        # assert
+        self.assertEqual(resultadoEsperado, resultadoCalculado)
+    
+    def test_suma_NoNumeros_lanzaException(self):
+
+        with self.assertRaises(TypeError):
+            self.operacion.suma(5, "a")
+
+    def test_divicion_numerosenteros_retornadivicion(self):
+        # arrange
+        division1 = 10
+        division2 = 2
+        resultadoEsperado = 5
+
+
+        # do
+       
+        resultadoCalculado = self.operacion.division(division1, division2)
 
         # assert
         self.assertEqual(resultadoEsperado, resultadoCalculado)
